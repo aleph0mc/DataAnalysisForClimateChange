@@ -18,7 +18,7 @@ con <- DBI::dbConnect(odbc::odbc(),
 
 #get the global data
 dfGlobalTempAndRF = dbGetQuery(conn = con,
-                               "SELECT 
+  "SELECT 
   	  [time]
   	, [TGL]
   	, [GHG]
