@@ -1,13 +1,13 @@
-setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
+setwd("C:/.../.../climateResearch")
 getwd()
 
 library(DBI)
 library(reshape2)
 
-#connect to sql server 2022 developer edition
+#connect to sql server 2022
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\SQLSERVER01", 
+                      Server = ".\\...", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 #retreive data
