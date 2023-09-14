@@ -16,7 +16,7 @@ theme_set(theme_minimal())
 #connect to sql server 2022 developer edition
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\SQLSERVER01", 
+                      Server = ".\\....", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 
