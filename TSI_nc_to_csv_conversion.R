@@ -1,7 +1,7 @@
 #nc to csv conversion for TSI data
 #data source https://lasp.colorado.edu/lisird/data/nrl2_tsi_P1Y
 
-setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
+setwd("C:/.../.../climateResearch")
 getwd()
 
 library(ggplot2) # package for plotting
