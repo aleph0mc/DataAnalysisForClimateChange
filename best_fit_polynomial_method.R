@@ -1,4 +1,4 @@
-setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScripts")
+setwd("C:/.../.../climateResearch")
 getwd()
 
 library(ggplot2)
