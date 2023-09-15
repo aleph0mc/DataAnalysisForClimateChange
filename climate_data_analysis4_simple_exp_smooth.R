@@ -1,4 +1,4 @@
-setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
+setwd("C:/.../...")
 getwd()
 
 library(ggplot2)
@@ -17,7 +17,7 @@ theme_set(theme_minimal())
 #connect to sql server 2022 developer edition
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\SQLSERVER01", 
+                      Server = ".\\...", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 
