@@ -1,4 +1,4 @@
-setwd("C:/.../rScriptsForClimateResearch")
+setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
 getwd()
 
 library(ggplot2)
@@ -18,7 +18,7 @@ theme_set(theme_minimal())
 #connect to sql server 2022 developer edition
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\...", 
+                      Server = ".\\SQLSERVER01", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 
@@ -75,7 +75,7 @@ summary(dfTAnomNormSince1850)
 
 #normalized and orig. data comparison
 ggplot(data = dfTAnomNormSince1850, mapping = aes(x = time)) +
-  labs(x = 'Year', y = 'T. Anom. Norm.') +
+  labs(x = 'Year', y = 'T. Anom. Orig. vs Norm.') +
   ggtitle("Temp. Anom. Orig/Norm. [0,1] comparison") +
   geom_line(mapping = aes(y = TAnom, col = 'Orig'), linewidth = 1, alpha = .5) +
   geom_line(mapping = aes(y = NormTAnom, col = 'Norm'), linewidth = 1, alpha = .5) +
