@@ -1,4 +1,4 @@
-setwd("C:/.../rScriptsForClimateResearch")
+setwd("C:/.../ClimateResearch")
 getwd()
 
 library(ggplot2) # package for plotting
