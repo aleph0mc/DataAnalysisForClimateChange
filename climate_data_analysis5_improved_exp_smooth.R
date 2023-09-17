@@ -1,4 +1,4 @@
-setwd("C:/.../...")
+setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
 getwd()
 
 library(ggplot2)
@@ -18,7 +18,7 @@ theme_set(theme_minimal())
 #connect to sql server 2022 developer edition
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\...", 
+                      Server = ".\\SQLSERVER01", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 
@@ -62,3 +62,25 @@ scale_x_continuous(breaks = seq(from = 1610, to = 2025, by = 25))
 
 #compute the accuracy metrics
 accuracy(pred_man, dfDataTest$TSI)
+
+#WORKING ON TS on temp. anom. normalized (x-xmin)/(xmax-xmin) to [0,1]
+dfTAnomNormSince1850 <- dbGetQuery(conn = con,
+  "SELECT
+  	  [time]
+  	, [TAnom]
+  	, [NormTAnom] NormTAnom
+  FROM [GMAST_DATA].[dbo].[vw_TempAnomNormForStats]")
+summary(dfTAnomNormSince1850)
+
+
+#normalized and orig. data comparison
+ggplot(data = dfTAnomNormSince1850, mapping = aes(x = time)) +
+  labs(x = 'Year', y = 'T. Anom. Norm.') +
+  ggtitle("Temp. Anom. Orig/Norm. [0,1] comparison") +
+  geom_line(mapping = aes(y = TAnom, col = 'Orig'), linewidth = 1, alpha = .5) +
+  geom_line(mapping = aes(y = NormTAnom, col = 'Norm'), linewidth = 1, alpha = .5) +
+  scale_colour_manual(name = 'Scales',
+                      breaks=c('Orig', 'Norm'),
+                      values =c('Orig'='maroon', 'Norm' = 'grey'),
+                      labels = c('Original', 'Normalized [0,1]')) +
+  scale_x_continuous(breaks = seq(from = 1850, to = 2025, by = 25))
