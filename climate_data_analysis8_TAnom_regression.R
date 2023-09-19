@@ -1,4 +1,4 @@
-setwd("C:/.../ClimateResearch")
+setwd("C:/Users/milko/OneDrive/Documenti/R_statistics_language/rScriptsForClimateResearch")
 getwd()
 
 library(ggplot2)
@@ -18,7 +18,7 @@ theme_set(theme_minimal())
 #connect to sql server 2022 developer edition
 con <- DBI::dbConnect(odbc::odbc(), 
                       Driver = "SQL Server", 
-                      Server = ".\\...", 
+                      Server = ".\\SQLSERVER01", 
                       Database = "GMAST_DATA", 
                       Trusted_Connection = "True")
 
@@ -81,3 +81,5 @@ ggplot(data = dfDataAll, mapping = aes(x = time)) +
   geom_line(mapping = aes(y = pred_test), color = 'red', linewidth = 1, alpha = .5) +
   geom_vline(aes(xintercept = 1936), color = 'black', linewidth = 1) +
   scale_x_continuous(breaks = seq(from = 1755, to = 2025, by = 25))
+
+#log. transf. cannot be applied bcos of neg. values
