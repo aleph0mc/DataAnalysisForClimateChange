@@ -65,7 +65,7 @@ print(tanom_net$residuals)
 pred_tanom_test <- forecast(tanom_net, h = nTestPeriod, level = 0)
 print(pred_tanom_test$mean)
 
-#predfiction accuracy
+#prediction accuracy
 accuracy(pred_tanom_test,dfDataTest$TAnom)
 
 #plot
